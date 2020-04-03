@@ -1,0 +1,29 @@
+{
+    "onlyShowNum": true,
+    "bubbleWidth": 80.0,
+    "bubbleHeight": 30.0,
+    "backgroundImg":"background",
+    "list": [
+        {
+                "imageName": "icon1",
+                "text": "Hello",
+                "num": 0,
+                "logitude": 30.0,
+                "latitude": 50.0
+        },
+        {
+                "imageName": "icon2",
+                "text": "Bonjour",
+                "num": 1,
+                "logitude": 100.0,
+                "latitude": 90.0
+        },
+        {
+                "imageName": "icon3",
+                "text": "Guten Tag",
+                "num": 2,
+                "logitude": 240.0,
+                "latitude": 10.0
+        }
+    ]
+}

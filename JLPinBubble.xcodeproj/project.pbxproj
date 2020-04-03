@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		CCA3921C243233D7004B3720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3921B243233D7004B3720 /* AppDelegate.swift */; };
 		CCA3921E243233D7004B3720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3921D243233D7004B3720 /* SceneDelegate.swift */; };
-		CCA39220243233D7004B3720 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3921F243233D7004B3720 /* ContentView.swift */; };
 		CCA39222243233DB004B3720 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCA39221243233DB004B3720 /* Assets.xcassets */; };
 		CCA39225243233DB004B3720 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCA39224243233DB004B3720 /* Preview Assets.xcassets */; };
 		CCA39228243233DB004B3720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA39226243233DB004B3720 /* LaunchScreen.storyboard */; };
 		CCA39233243233DB004B3720 /* JLPinBubbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA39232243233DB004B3720 /* JLPinBubbleTests.swift */; };
 		CCA3923E243233DB004B3720 /* JLPinBubbleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3923D243233DB004B3720 /* JLPinBubbleUITests.swift */; };
+		CCA3924C24323655004B3720 /* BubbleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3924B24323655004B3720 /* BubbleViewModel.swift */; };
+		CCA3924E24324336004B3720 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3924D24324336004B3720 /* BubbleView.swift */; };
+		CCA39290243781DD004B3720 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3928F243781DC004B3720 /* Data.swift */; };
+		CCA3929424378A90004B3720 /* Published.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3929324378A90004B3720 /* Published.swift */; };
+		CCA392952437917B004B3720 /* bubbles.json in Resources */ = {isa = PBXBuildFile; fileRef = CCA3929224378227004B3720 /* bubbles.json */; };
+		CCA39297243794BA004B3720 /* BubbleCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA39296243794BA004B3720 /* BubbleCanvas.swift */; };
+		CCA392992437972D004B3720 /* BubblesDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA392982437972D004B3720 /* BubblesDemo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +44,6 @@
 		CCA39218243233D7004B3720 /* JLPinBubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLPinBubble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA3921B243233D7004B3720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCA3921D243233D7004B3720 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CCA3921F243233D7004B3720 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CCA39221243233DB004B3720 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCA39224243233DB004B3720 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CCA39227243233DB004B3720 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		CCA39239243233DB004B3720 /* JLPinBubbleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLPinBubbleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA3923D243233DB004B3720 /* JLPinBubbleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPinBubbleUITests.swift; sourceTree = "<group>"; };
 		CCA3923F243233DB004B3720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCA3924B24323655004B3720 /* BubbleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewModel.swift; sourceTree = "<group>"; };
+		CCA3924D24324336004B3720 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
+		CCA3928F243781DC004B3720 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		CCA3929224378227004B3720 /* bubbles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bubbles.json; sourceTree = "<group>"; };
+		CCA3929324378A90004B3720 /* Published.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Published.swift; sourceTree = "<group>"; };
+		CCA39296243794BA004B3720 /* BubbleCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCanvas.swift; sourceTree = "<group>"; };
+		CCA392982437972D004B3720 /* BubblesDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesDemo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +111,19 @@
 		CCA3921A243233D7004B3720 /* JLPinBubble */ = {
 			isa = PBXGroup;
 			children = (
+				CCA392912437820D004B3720 /* Resource */,
 				CCA3921B243233D7004B3720 /* AppDelegate.swift */,
 				CCA3921D243233D7004B3720 /* SceneDelegate.swift */,
-				CCA3921F243233D7004B3720 /* ContentView.swift */,
+				CCA392982437972D004B3720 /* BubblesDemo.swift */,
+				CCA3924D24324336004B3720 /* BubbleView.swift */,
+				CCA39296243794BA004B3720 /* BubbleCanvas.swift */,
+				CCA3924B24323655004B3720 /* BubbleViewModel.swift */,
 				CCA39221243233DB004B3720 /* Assets.xcassets */,
 				CCA39226243233DB004B3720 /* LaunchScreen.storyboard */,
 				CCA39229243233DB004B3720 /* Info.plist */,
 				CCA39223243233DB004B3720 /* Preview Content */,
+				CCA3928F243781DC004B3720 /* Data.swift */,
+				CCA3929324378A90004B3720 /* Published.swift */,
 			);
 			path = JLPinBubble;
 			sourceTree = "<group>";
@@ -134,6 +152,14 @@
 				CCA3923F243233DB004B3720 /* Info.plist */,
 			);
 			path = JLPinBubbleUITests;
+			sourceTree = "<group>";
+		};
+		CCA392912437820D004B3720 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CCA3929224378227004B3720 /* bubbles.json */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +268,7 @@
 			files = (
 				CCA39228243233DB004B3720 /* LaunchScreen.storyboard in Resources */,
 				CCA39225243233DB004B3720 /* Preview Assets.xcassets in Resources */,
+				CCA392952437917B004B3720 /* bubbles.json in Resources */,
 				CCA39222243233DB004B3720 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,9 +294,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCA392992437972D004B3720 /* BubblesDemo.swift in Sources */,
+				CCA39290243781DD004B3720 /* Data.swift in Sources */,
+				CCA39297243794BA004B3720 /* BubbleCanvas.swift in Sources */,
+				CCA3929424378A90004B3720 /* Published.swift in Sources */,
+				CCA3924E24324336004B3720 /* BubbleView.swift in Sources */,
 				CCA3921C243233D7004B3720 /* AppDelegate.swift in Sources */,
+				CCA3924C24323655004B3720 /* BubbleViewModel.swift in Sources */,
 				CCA3921E243233D7004B3720 /* SceneDelegate.swift in Sources */,
-				CCA39220243233D7004B3720 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
