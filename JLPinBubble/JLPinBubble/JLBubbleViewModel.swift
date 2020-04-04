@@ -160,7 +160,7 @@ class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
     ///   - rect1: the rect of pin bubble 1
     ///   - rect2: the rect of pin bubble 2
     /// - Returns: whether collide or not
-    func isCollide(_ scale:CGFloat, rect1:JLBubbleViewModel, rect2:JLBubbleViewModel) -> Bool {
+    private func isCollide(_ scale:CGFloat, rect1:JLBubbleViewModel, rect2:JLBubbleViewModel) -> Bool {
         let displayWidth = self.bubbleSize.width / scale
         let displayHeight = self.bubbleSize.height / scale
         let isCollide = rect1.logitude < rect2.logitude + Float(displayWidth) &&
@@ -200,7 +200,7 @@ class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
     ///   - index2: the second bubble's index in the list
     ///   - scale: zooming scale
     /// - Returns: the result of dectection
-    func judgeTwoBubbleCollide(_ bubbleList:[JLBubbleViewModel],index1:Int, index2:Int, scale: CGFloat) -> Bool {
+    private func judgeTwoBubbleCollide(_ bubbleList:[JLBubbleViewModel],index1:Int, index2:Int, scale: CGFloat) -> Bool {
         
         let rect1 = bubbleList[index1]
         let rect2 = bubbleList[index2]
@@ -220,7 +220,7 @@ class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
     /// - Parameters:
     ///   - bubbleIndex1: the first bubble's index
     ///   - bubbleIndex2: the second bubble's index
-    func mergeIntoOne(bubbleIndex1:Int,bubbleIndex2:Int) {
+    private func mergeIntoOne(bubbleIndex1:Int,bubbleIndex2:Int) {
         let bubble1 = self.list[bubbleIndex1]
         let bubble2 = self.list[bubbleIndex2]
         let newBubble = self.mergeOperation(bubble1,bubble2)
