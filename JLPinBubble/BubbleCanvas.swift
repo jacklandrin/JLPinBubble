@@ -24,7 +24,6 @@ struct BubbleCanvas: View {
     
     init(bubbleTapAction: @escaping (BubbleViewModel) -> ()) {
         self.bubbleTapAction = bubbleTapAction
-        
     }
     
     var body: some View {
@@ -39,7 +38,7 @@ struct BubbleCanvas: View {
                     }
                     }.offset(x:CGFloat(bubble.logitude) , y:CGFloat(bubble.latitude))
                     .frame(width: self.bubbleViewList.bubbleSize.width / self.scale, height: self.bubbleViewList.bubbleSize.height / self.scale)
-                    }
+                }.scaleEffect(1, anchor: UnitPoint(x: self.bubbleViewList.bubbleSize.width / 2, y: self.bubbleViewList.bubbleSize.height))
             }.scaledToFill()
         }
         .offset(x:self.offset.width / 2, y: self.offset.height / 2)
