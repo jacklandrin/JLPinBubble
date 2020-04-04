@@ -27,20 +27,17 @@ struct BubbleCanvas: View {
     }
     
     var body: some View {
-        ZStack{
-            Image(self.bubbleViewList.backgroundImg)
-            
-            ZStack.init(alignment: .center){
-                ForEach(self.bubbleViewList.list, id: \.id){bubble in
-                   BubbleView(onlyShowNum: self.bubbleViewList.onlyShowNum).environmentObject(bubble).onTapGesture(count:1){
-                    bubble.tapAction{ b in
-                        self.bubbleTapAction(b)
-                    }
-                    }.offset(x:CGFloat(bubble.logitude) , y:CGFloat(bubble.latitude))
-                    .frame(width: self.bubbleViewList.bubbleSize.width / self.scale, height: self.bubbleViewList.bubbleSize.height / self.scale)
-                }.scaleEffect(1, anchor: UnitPoint(x: self.bubbleViewList.bubbleSize.width / 2, y: self.bubbleViewList.bubbleSize.height))
-            }.scaledToFill()
-        }
+        ZStack.init(alignment: .bottom){
+            ForEach(self.bubbleViewList.list, id: \.id){bubble in
+                BubbleView(onlyShowNum: self.bubbleViewList.onlyShowNum, scale: self.scale).environmentObject(bubble).onTapGesture(count:1){
+                bubble.tapAction{ b in
+                    self.bubbleTapAction(b)
+                }
+                }.offset(x:CGFloat(bubble.logitude) , y:CGFloat(bubble.latitude))
+                .frame(width: self.bubbleViewList.bubbleSize.width / self.scale, height: self.bubbleViewList.bubbleSize.height / self.scale)
+            }
+        }.background(Image(self.bubbleViewList.backgroundImg), alignment: .center)
+        .scaledToFill()
         .offset(x:self.offset.width / 2, y: self.offset.height / 2)
         .scaleEffect(self.scale)
             .simultaneousGesture(MagnificationGesture()

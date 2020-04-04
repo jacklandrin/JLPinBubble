@@ -20,7 +20,7 @@ struct BubblesDemo: View {
     var body: some View {
         BubbleCanvas(bubbleTapAction: {bubble in
             bubble.num += 1
-            }).environmentObject(bubbleList)
+        }).environmentObject(bubbleList)
     }
     
 }
