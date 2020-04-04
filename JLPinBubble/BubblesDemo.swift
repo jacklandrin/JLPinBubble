@@ -9,20 +9,20 @@
 import SwiftUI
 
 struct BubblesDemo: View {
-    private var bubbleList = BubbleListViewModel.bubbleList
+    private var bubbleCanvasData = JBubbleCanvasViewModel.bubbleCanvasDataSource
     
     init() {
-        bubbleList.mergeOperation = { b1, b2 in
-        BubbleViewModel(imageName:b1.imageName,text:b1.text + b2.text,num:b1.num, logitude:(b1.logitude + b2.logitude) / 2,latitude:(b1.latitude + b2.latitude) / 2)
+        bubbleCanvasData.mergeOperation = { b1, b2 in
+        JBubbleViewModel(imageName:b1.imageName,text:b1.text + b2.text,num:b1.num, logitude:(b1.logitude + b2.logitude) / 2,latitude:(b1.latitude + b2.latitude) / 2)
             }
     }
     
     var body: some View {
-        BubbleCanvas(bubbleTapAction: {bubble in
+        JBubbleCanvas(bubbleTapAction: {bubble in
             bubble.num += 1
         }){
-            Image(self.bubbleList.backgroundImg)
-        }.environmentObject(bubbleList)
+            Image(self.bubbleCanvasData.backgroundImg)
+        }.environmentObject(bubbleCanvasData)
     }
     
 }

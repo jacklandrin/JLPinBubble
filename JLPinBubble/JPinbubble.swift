@@ -8,11 +8,10 @@
 
 import SwiftUI
 
-struct BubbleView: View {
-    @EnvironmentObject var model: BubbleViewModel
+struct JPinbubble: View {
+    @EnvironmentObject var model: JBubbleViewModel
     var onlyShowNum: Bool
     var scale:CGFloat = 1.0
-    
     
     var body: some View {
         ZStack{
@@ -27,9 +26,9 @@ struct BubbleView: View {
 
 
 struct BubbleView_Previews: PreviewProvider {
-    static var bubbleList = BubbleListViewModel.bubbleList
+    static var bubbleList = JBubbleCanvasViewModel.bubbleCanvasDataSource
     static var previews: some View {
-        BubbleView(onlyShowNum: true, scale: 1.0).environmentObject(bubbleList.list[0])
+        JPinbubble(onlyShowNum: true, scale: 1.0).environmentObject(bubbleList.list[0])
             .previewLayout(.fixed(width: 40, height: 30))
     }
 }

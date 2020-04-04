@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct BubbleCanvas<Content:View>: View {
-    @EnvironmentObject var bubbleViewList : BubbleListViewModel
+struct JBubbleCanvas<Content:View>: View {
+    @EnvironmentObject var bubbleCanvasDataSource : JBubbleCanvasViewModel
     
     @State var switchbool:Bool = true
     @State var scale:CGFloat = 1.0
@@ -17,27 +17,25 @@ struct BubbleCanvas<Content:View>: View {
     @State var offset = CGSize.zero
     @State var lastOffset = CGSize.zero
     
-    private var bubbleList:[UUID : BubbleView] = [:]
-    
-    public var bubbleTapAction:(BubbleViewModel)->()
+    public var bubbleTapAction:(JBubbleViewModel)->()
     
     let viewBuilder:() -> Content
     
     
-    init(bubbleTapAction: @escaping (BubbleViewModel) -> (), @ViewBuilder builder: @escaping () -> Content) {
+    init(bubbleTapAction: @escaping (JBubbleViewModel) -> (), @ViewBuilder builder: @escaping () -> Content) {
         self.bubbleTapAction = bubbleTapAction
         self.viewBuilder = builder
     }
     
     var body: some View {
         ZStack.init(alignment: .bottom){
-            ForEach(self.bubbleViewList.list, id: \.id){bubble in
-                BubbleView(onlyShowNum: self.bubbleViewList.onlyShowNum, scale: self.scale).environmentObject(bubble).onTapGesture(count:1){
+            ForEach(self.bubbleCanvasDataSource.list, id: \.id){bubble in
+                JPinbubble(onlyShowNum: self.bubbleCanvasDataSource.onlyShowNum, scale: self.scale).environmentObject(bubble).onTapGesture(count:1){
                 bubble.tapAction{ b in
                     self.bubbleTapAction(b)
                 }
                 }.offset(x:CGFloat(bubble.logitude) , y:CGFloat(bubble.latitude))
-                .frame(width: self.bubbleViewList.bubbleSize.width / self.scale, height: self.bubbleViewList.bubbleSize.height / self.scale)
+                .frame(width: self.bubbleCanvasDataSource.bubbleSize.width / self.scale, height: self.bubbleCanvasDataSource.bubbleSize.height / self.scale)
             }
         }.background(viewBuilder(), alignment: .center)
         .scaledToFill()
@@ -47,9 +45,9 @@ struct BubbleCanvas<Content:View>: View {
                 .onChanged{value in
                     self.scale = value.magnitude * self.lastScale
                     if value.magnitude < 1 {
-                        self.bubbleViewList.judgetOverlap(self.scale)
+                        self.bubbleCanvasDataSource.judgetOverlap(self.scale)
                     } else {
-                        self.bubbleViewList.judgeDivided(self.scale)
+                        self.bubbleCanvasDataSource.judgeDivided(self.scale)
                     }
             }
             .onEnded{ value in
@@ -70,10 +68,10 @@ struct BubbleCanvas<Content:View>: View {
 
 struct BubbleCanvas_Previews: PreviewProvider {
     static var previews: some View {
-        BubbleCanvas(bubbleTapAction: {bubble in
+        JBubbleCanvas(bubbleTapAction: {bubble in
             bubble.num += 1
         }){
-            Image(BubbleListViewModel.bubbleList.backgroundImg)
-        }.environmentObject(BubbleListViewModel.bubbleList)
+            Image(JBubbleCanvasViewModel.bubbleCanvasDataSource.backgroundImg)
+        }.environmentObject(JBubbleCanvasViewModel.bubbleCanvasDataSource)
     }
 }

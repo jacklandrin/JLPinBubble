@@ -8,7 +8,7 @@
 
 import Foundation
 
-let bubbleData : BubbleListViewModel = load("bubbles.json")
+let bubbleData : JBubbleCanvasViewModel = load("bubbles.json")
 
 func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
     let data: Data

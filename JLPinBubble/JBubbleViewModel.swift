@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-class BubbleViewModel : ObservableObject, Codable, Identifiable {
+class JBubbleViewModel : ObservableObject, Codable, Identifiable {
     
     
     let id = UUID()
@@ -18,7 +18,7 @@ class BubbleViewModel : ObservableObject, Codable, Identifiable {
     @Published var num: Int = 0
     var logitude: Float = 0.0
     var latitude: Float = 0.0
-    var subBubble:[BubbleViewModel] = []
+    var subBubble:[JBubbleViewModel] = []
     
     
     init(imageName:String, text:String, num: Int, logitude: Float, latitude: Float) {
@@ -57,41 +57,41 @@ class BubbleViewModel : ObservableObject, Codable, Identifiable {
     }
 
     
-    public func tapAction(action:(BubbleViewModel) -> ()) {
+    public func tapAction(action:(JBubbleViewModel) -> ()) {
         action(self)
     }
 
 }
 
 var testData = [
-    BubbleViewModel(imageName:"icon1",text:"Hello",num:0,logitude:30.0,latitude:50.0),
-    BubbleViewModel(imageName:"icon2",text:"Bonjour",num:1,logitude:100.0,latitude:90.0),
-    BubbleViewModel(imageName:"icon3",text:"Guten Tag",num:2,logitude:240.0,latitude:10.0)
+    JBubbleViewModel(imageName:"icon1",text:"Hello",num:0,logitude:30.0,latitude:50.0),
+    JBubbleViewModel(imageName:"icon2",text:"Bonjour",num:1,logitude:100.0,latitude:90.0),
+    JBubbleViewModel(imageName:"icon3",text:"Guten Tag",num:2,logitude:240.0,latitude:10.0)
 ]
 
-extension BubbleViewModel{
+extension JBubbleViewModel{
     
     
-    static var helloBubble = BubbleListViewModel.bubbleList.list[0]
+    static var helloBubble = JBubbleCanvasViewModel.bubbleCanvasDataSource.list[0]
     
 }
 
-class BubbleListViewModel : ObservableObject, Codable, Identifiable{
+class JBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
     
-    init(_ list:[BubbleViewModel] = [], onlyShowNum:Bool, bubbleSize:CGSize, backgroundImg:String) {
+    init(_ list:[JBubbleViewModel] = [], onlyShowNum:Bool, bubbleSize:CGSize, backgroundImg:String) {
         self.list = list
         self.onlyShowNum = onlyShowNum
         self.bubbleSize = bubbleSize
         self.backgroundImg = backgroundImg
     }
     
-    convenience init(_ list:[BubbleViewModel] = [], bubbleSize:CGSize, backgroundImg: String) {
+    convenience init(_ list:[JBubbleViewModel] = [], bubbleSize:CGSize, backgroundImg: String) {
         self.init(list, onlyShowNum:false, bubbleSize: bubbleSize, backgroundImg: backgroundImg)
     }
     
     required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let list = try values.decode(Array<BubbleViewModel>.self, forKey: .list)
+        let list = try values.decode(Array<JBubbleViewModel>.self, forKey: .list)
         let bubbleWidth = try values.decode(CGFloat.self, forKey: .bubbleWidth)
         let bubbleHeight = try values.decode(CGFloat.self, forKey: .bubbleHeight)
         let onlyShowNum = try values.decode(Bool.self, forKey: .onlyShowNum)
@@ -116,7 +116,7 @@ class BubbleListViewModel : ObservableObject, Codable, Identifiable{
         case backgroundImg
     }
     
-    @Published var list:[BubbleViewModel] = testData {
+    @Published var list:[JBubbleViewModel] = testData {
         didSet{didChange.send(self)}
     }
 
@@ -133,8 +133,8 @@ class BubbleListViewModel : ObservableObject, Codable, Identifiable{
         didSet{didChange.send(self)}
     }
     
-    var mergeOperation: (BubbleViewModel, BubbleViewModel) -> BubbleViewModel = { bubble1, bubble2 in
-       BubbleViewModel(imageName:bubble1.imageName,text:bubble1.text + bubble2.text,num:bubble1.num + bubble2.num,logitude:(bubble1.logitude + bubble2.logitude) / 2,latitude:(bubble1.latitude + bubble2.latitude) / 2)
+    var mergeOperation: (JBubbleViewModel, JBubbleViewModel) -> JBubbleViewModel = { bubble1, bubble2 in
+       JBubbleViewModel(imageName:bubble1.imageName,text:bubble1.text + bubble2.text,num:bubble1.num + bubble2.num,logitude:(bubble1.logitude + bubble2.logitude) / 2,latitude:(bubble1.latitude + bubble2.latitude) / 2)
         
         } {
         didSet{
@@ -142,10 +142,10 @@ class BubbleListViewModel : ObservableObject, Codable, Identifiable{
         }
     }
     
-    var didChange = PassthroughSubject<BubbleListViewModel, Never>()
+    var didChange = PassthroughSubject<JBubbleCanvasViewModel, Never>()
     
     
-    func isCollide(_ scale:CGFloat, rect1:BubbleViewModel, rect2:BubbleViewModel) -> Bool {
+    func isCollide(_ scale:CGFloat, rect1:JBubbleViewModel, rect2:JBubbleViewModel) -> Bool {
         let displayWidth = self.bubbleSize.width / scale
         let displayHeight = self.bubbleSize.height / scale
         let isCollide = rect1.logitude < rect2.logitude + Float(displayWidth) &&
@@ -176,7 +176,7 @@ class BubbleListViewModel : ObservableObject, Codable, Identifiable{
         
     }
     
-    func judgeTwoBubbleCollide(_ bubbleList:[BubbleViewModel],index1:Int, index2:Int, scale: CGFloat) -> Bool {
+    func judgeTwoBubbleCollide(_ bubbleList:[JBubbleViewModel],index1:Int, index2:Int, scale: CGFloat) -> Bool {
         
         let rect1 = bubbleList[index1]
         let rect2 = bubbleList[index2]
@@ -224,8 +224,8 @@ class BubbleListViewModel : ObservableObject, Codable, Identifiable{
 }
 
 
-extension BubbleListViewModel {
-    static var bubbleList:BubbleListViewModel = bubbleData//BubbleListViewModel(testData,onlyShowNum:true, bubbleSize:  CGSize(width:80.0,height:30.0))
+extension JBubbleCanvasViewModel {
+    static var bubbleCanvasDataSource:JBubbleCanvasViewModel = bubbleData//JBubbleListViewModel(testData,onlyShowNum:true, bubbleSize:  CGSize(width:80.0,height:30.0))
 }
 
 
