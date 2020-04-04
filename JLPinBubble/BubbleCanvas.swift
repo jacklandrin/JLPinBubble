@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct BubbleCanvas: View {
+struct BubbleCanvas<Content:View>: View {
     @EnvironmentObject var bubbleViewList : BubbleListViewModel
     
     @State var switchbool:Bool = true
@@ -21,9 +21,12 @@ struct BubbleCanvas: View {
     
     public var bubbleTapAction:(BubbleViewModel)->()
     
+    let viewBuilder:() -> Content
     
-    init(bubbleTapAction: @escaping (BubbleViewModel) -> ()) {
+    
+    init(bubbleTapAction: @escaping (BubbleViewModel) -> (), @ViewBuilder builder: @escaping () -> Content) {
         self.bubbleTapAction = bubbleTapAction
+        self.viewBuilder = builder
     }
     
     var body: some View {
@@ -36,7 +39,7 @@ struct BubbleCanvas: View {
                 }.offset(x:CGFloat(bubble.logitude) , y:CGFloat(bubble.latitude))
                 .frame(width: self.bubbleViewList.bubbleSize.width / self.scale, height: self.bubbleViewList.bubbleSize.height / self.scale)
             }
-        }.background(Image(self.bubbleViewList.backgroundImg), alignment: .center)
+        }.background(viewBuilder(), alignment: .center)
         .scaledToFill()
         .offset(x:self.offset.width / 2, y: self.offset.height / 2)
         .scaleEffect(self.scale)
@@ -69,6 +72,8 @@ struct BubbleCanvas_Previews: PreviewProvider {
     static var previews: some View {
         BubbleCanvas(bubbleTapAction: {bubble in
             bubble.num += 1
-        }).environmentObject(BubbleListViewModel.bubbleList)
+        }){
+            Image(BubbleListViewModel.bubbleList.backgroundImg)
+        }.environmentObject(BubbleListViewModel.bubbleList)
     }
 }
