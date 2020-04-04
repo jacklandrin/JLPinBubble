@@ -9,9 +9,8 @@
 import SwiftUI
 import Combine
 
+
 class JLBubbleViewModel : ObservableObject, Codable, Identifiable {
-    
-    
     let id = UUID()
     var imageName: String = ""
     var text: String = ""
@@ -48,7 +47,6 @@ class JLBubbleViewModel : ObservableObject, Codable, Identifiable {
     }
     
     enum CodingKeys: String, CodingKey {
-        //case id
         case imageName
         case text
         case num
@@ -57,6 +55,9 @@ class JLBubbleViewModel : ObservableObject, Codable, Identifiable {
     }
 
     
+    /// the bubble's tap action could be defined
+    /// - Parameter action: the action closure
+    /// - Returns: void
     public func tapAction(action:(JLBubbleViewModel) -> ()) {
         action(self)
     }
@@ -70,11 +71,10 @@ var testData = [
 ]
 
 extension JLBubbleViewModel{
-    
-    
     static var helloBubble = JLBubbleCanvasViewModel.bubbleCanvasDataSource.list[0]
-    
 }
+
+
 
 class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
     
@@ -116,23 +116,32 @@ class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
         case backgroundImg
     }
     
+    
+    /// all bubble's view models that are showing
     @Published var list:[JLBubbleViewModel] = testData {
         didSet{didChange.send(self)}
     }
-
+    
+    
+    /// show if num or text
     @Published var onlyShowNum: Bool {
            didSet{didChange.send(self)}
     }
     
+    
+    /// bubble's size
     var bubbleSize:CGSize = .zero {
         didSet{didChange.send(self)}
     }
     
     
+    /// background image's name
     var backgroundImg:String = "" {
         didSet{didChange.send(self)}
     }
     
+    
+    /// the operation of merging could be defined
     var mergeOperation: (JLBubbleViewModel, JLBubbleViewModel) -> JLBubbleViewModel = { bubble1, bubble2 in
        JLBubbleViewModel(imageName:bubble1.imageName,text:bubble1.text + bubble2.text,num:bubble1.num + bubble2.num,logitude:(bubble1.logitude + bubble2.logitude) / 2,latitude:(bubble1.latitude + bubble2.latitude) / 2)
         
@@ -145,6 +154,12 @@ class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
     var didChange = PassthroughSubject<JLBubbleCanvasViewModel, Never>()
     
     
+    /// collision detection
+    /// - Parameters:
+    ///   - scale: zooming scale
+    ///   - rect1: the rect of pin bubble 1
+    ///   - rect2: the rect of pin bubble 2
+    /// - Returns: whether collide or not
     func isCollide(_ scale:CGFloat, rect1:JLBubbleViewModel, rect2:JLBubbleViewModel) -> Bool {
         let displayWidth = self.bubbleSize.width / scale
         let displayHeight = self.bubbleSize.height / scale
@@ -155,6 +170,9 @@ class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
         return isCollide
     }
     
+    
+    /// judget whether there is bubbles overlapping or not
+    /// - Parameter scale: zooming scale
     func judgetOverlap(_ scale:CGFloat) {
         let bubbleList = self.list
         if bubbleList.count < 2 {
@@ -172,10 +190,16 @@ class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
                }
             }
         }
-        
-        
     }
     
+    
+    /// judge whether two bubbles collide or not
+    /// - Parameters:
+    ///   - bubbleList: all bubbles that are showing
+    ///   - index1: the first bubble's index in the list
+    ///   - index2: the second bubble's index in the list
+    ///   - scale: zooming scale
+    /// - Returns: the result of dectection
     func judgeTwoBubbleCollide(_ bubbleList:[JLBubbleViewModel],index1:Int, index2:Int, scale: CGFloat) -> Bool {
         
         let rect1 = bubbleList[index1]
@@ -192,10 +216,13 @@ class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
     }
     
     
+    /// merge two bubbles into one in ruled fashion
+    /// - Parameters:
+    ///   - bubbleIndex1: the first bubble's index
+    ///   - bubbleIndex2: the second bubble's index
     func mergeIntoOne(bubbleIndex1:Int,bubbleIndex2:Int) {
         let bubble1 = self.list[bubbleIndex1]
         let bubble2 = self.list[bubbleIndex2]
-        //let newBubble:BubbleViewModel =  BubbleViewModel(imageName:bubble1.imageName,text:bubble1.text + bubble2.text,num:bubble1.num + bubble2.num,logitude:(bubble1.logitude + bubble2.logitude) / 2,latitude:(bubble1.latitude + bubble2.latitude) / 2)
         let newBubble = self.mergeOperation(bubble1,bubble2)
         newBubble.subBubble = [bubble1,bubble2]
         self.list.removeAll{$0.id == bubble1.id}
@@ -205,6 +232,9 @@ class JLBubbleCanvasViewModel : ObservableObject, Codable, Identifiable{
         
     }
     
+    
+    /// judge whether there is bubble that could be divided into two bubbles or not
+    /// - Parameter scale: zooming scale
     func judgeDivided(_ scale:CGFloat) {
         let bubbleList = self.list
         for bubble in bubbleList {

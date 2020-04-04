@@ -26,6 +26,7 @@ struct BubblesDemo: View {
     }
     
 }
+
 #if DEBUG
 struct BubblesDemo_Previews: PreviewProvider {
     static var previews: some View {

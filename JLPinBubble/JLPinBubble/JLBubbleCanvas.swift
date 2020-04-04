@@ -65,6 +65,7 @@ struct JLBubbleCanvas<Content:View>: View {
     }
     
 }
+
 #if DEBUG
 struct BubbleCanvas_Previews: PreviewProvider {
     static var previews: some View {
