@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct JBubbleCanvas<Content:View>: View {
-    @EnvironmentObject var bubbleCanvasDataSource : JBubbleCanvasViewModel
+struct JLBubbleCanvas<Content:View>: View {
+    @EnvironmentObject var bubbleCanvasDataSource : JLBubbleCanvasViewModel
     
     @State var switchbool:Bool = true
     @State var scale:CGFloat = 1.0
@@ -17,12 +17,12 @@ struct JBubbleCanvas<Content:View>: View {
     @State var offset = CGSize.zero
     @State var lastOffset = CGSize.zero
     
-    public var bubbleTapAction:(JBubbleViewModel)->()
+    public var bubbleTapAction:(JLBubbleViewModel)->()
     
     let viewBuilder:() -> Content
     
     
-    init(bubbleTapAction: @escaping (JBubbleViewModel) -> (), @ViewBuilder builder: @escaping () -> Content) {
+    init(bubbleTapAction: @escaping (JLBubbleViewModel) -> (), @ViewBuilder builder: @escaping () -> Content) {
         self.bubbleTapAction = bubbleTapAction
         self.viewBuilder = builder
     }
@@ -30,7 +30,7 @@ struct JBubbleCanvas<Content:View>: View {
     var body: some View {
         ZStack.init(alignment: .bottom){
             ForEach(self.bubbleCanvasDataSource.list, id: \.id){bubble in
-                JPinbubble(onlyShowNum: self.bubbleCanvasDataSource.onlyShowNum, scale: self.scale).environmentObject(bubble).onTapGesture(count:1){
+                JLPinbubble(onlyShowNum: self.bubbleCanvasDataSource.onlyShowNum, scale: self.scale).environmentObject(bubble).onTapGesture(count:1){
                 bubble.tapAction{ b in
                     self.bubbleTapAction(b)
                 }
@@ -65,13 +65,14 @@ struct JBubbleCanvas<Content:View>: View {
     }
     
 }
-
+#if DEBUG
 struct BubbleCanvas_Previews: PreviewProvider {
     static var previews: some View {
-        JBubbleCanvas(bubbleTapAction: {bubble in
+        JLBubbleCanvas(bubbleTapAction: {bubble in
             bubble.num += 1
         }){
-            Image(JBubbleCanvasViewModel.bubbleCanvasDataSource.backgroundImg)
-        }.environmentObject(JBubbleCanvasViewModel.bubbleCanvasDataSource)
+            Image(JLBubbleCanvasViewModel.bubbleCanvasDataSource.backgroundImg)
+        }.environmentObject(JLBubbleCanvasViewModel.bubbleCanvasDataSource)
     }
 }
+#endif

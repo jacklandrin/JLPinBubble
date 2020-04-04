@@ -14,12 +14,12 @@
 		CCA39228243233DB004B3720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA39226243233DB004B3720 /* LaunchScreen.storyboard */; };
 		CCA39233243233DB004B3720 /* JLPinBubbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA39232243233DB004B3720 /* JLPinBubbleTests.swift */; };
 		CCA3923E243233DB004B3720 /* JLPinBubbleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3923D243233DB004B3720 /* JLPinBubbleUITests.swift */; };
-		CCA3924C24323655004B3720 /* JBubbleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3924B24323655004B3720 /* JBubbleViewModel.swift */; };
-		CCA3924E24324336004B3720 /* JPinbubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3924D24324336004B3720 /* JPinbubble.swift */; };
+		CCA3924C24323655004B3720 /* JLBubbleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3924B24323655004B3720 /* JLBubbleViewModel.swift */; };
+		CCA3924E24324336004B3720 /* JLPinbubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3924D24324336004B3720 /* JLPinbubble.swift */; };
 		CCA39290243781DD004B3720 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3928F243781DC004B3720 /* Data.swift */; };
 		CCA3929424378A90004B3720 /* Published.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3929324378A90004B3720 /* Published.swift */; };
 		CCA392952437917B004B3720 /* bubbles.json in Resources */ = {isa = PBXBuildFile; fileRef = CCA3929224378227004B3720 /* bubbles.json */; };
-		CCA39297243794BA004B3720 /* JBubbleCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA39296243794BA004B3720 /* JBubbleCanvas.swift */; };
+		CCA39297243794BA004B3720 /* JLBubbleCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA39296243794BA004B3720 /* JLBubbleCanvas.swift */; };
 		CCA392992437972D004B3720 /* BubblesDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA392982437972D004B3720 /* BubblesDemo.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,12 +54,12 @@
 		CCA39239243233DB004B3720 /* JLPinBubbleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLPinBubbleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA3923D243233DB004B3720 /* JLPinBubbleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPinBubbleUITests.swift; sourceTree = "<group>"; };
 		CCA3923F243233DB004B3720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCA3924B24323655004B3720 /* JBubbleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBubbleViewModel.swift; sourceTree = "<group>"; };
-		CCA3924D24324336004B3720 /* JPinbubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPinbubble.swift; sourceTree = "<group>"; };
+		CCA3924B24323655004B3720 /* JLBubbleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBubbleViewModel.swift; sourceTree = "<group>"; };
+		CCA3924D24324336004B3720 /* JLPinbubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPinbubble.swift; sourceTree = "<group>"; };
 		CCA3928F243781DC004B3720 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		CCA3929224378227004B3720 /* bubbles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bubbles.json; sourceTree = "<group>"; };
 		CCA3929324378A90004B3720 /* Published.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Published.swift; sourceTree = "<group>"; };
-		CCA39296243794BA004B3720 /* JBubbleCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBubbleCanvas.swift; sourceTree = "<group>"; };
+		CCA39296243794BA004B3720 /* JLBubbleCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBubbleCanvas.swift; sourceTree = "<group>"; };
 		CCA392982437972D004B3720 /* BubblesDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesDemo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,13 +111,11 @@
 		CCA3921A243233D7004B3720 /* JLPinBubble */ = {
 			isa = PBXGroup;
 			children = (
+				CCA3929A2438746F004B3720 /* JLPinBubble */,
 				CCA392912437820D004B3720 /* Resource */,
 				CCA3921B243233D7004B3720 /* AppDelegate.swift */,
 				CCA3921D243233D7004B3720 /* SceneDelegate.swift */,
 				CCA392982437972D004B3720 /* BubblesDemo.swift */,
-				CCA3924D24324336004B3720 /* JPinbubble.swift */,
-				CCA39296243794BA004B3720 /* JBubbleCanvas.swift */,
-				CCA3924B24323655004B3720 /* JBubbleViewModel.swift */,
 				CCA39221243233DB004B3720 /* Assets.xcassets */,
 				CCA39226243233DB004B3720 /* LaunchScreen.storyboard */,
 				CCA39229243233DB004B3720 /* Info.plist */,
@@ -160,6 +158,16 @@
 				CCA3929224378227004B3720 /* bubbles.json */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		CCA3929A2438746F004B3720 /* JLPinBubble */ = {
+			isa = PBXGroup;
+			children = (
+				CCA3924D24324336004B3720 /* JLPinbubble.swift */,
+				CCA39296243794BA004B3720 /* JLBubbleCanvas.swift */,
+				CCA3924B24323655004B3720 /* JLBubbleViewModel.swift */,
+			);
+			path = JLPinBubble;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,11 +304,11 @@
 			files = (
 				CCA392992437972D004B3720 /* BubblesDemo.swift in Sources */,
 				CCA39290243781DD004B3720 /* Data.swift in Sources */,
-				CCA39297243794BA004B3720 /* JBubbleCanvas.swift in Sources */,
+				CCA39297243794BA004B3720 /* JLBubbleCanvas.swift in Sources */,
 				CCA3929424378A90004B3720 /* Published.swift in Sources */,
-				CCA3924E24324336004B3720 /* JPinbubble.swift in Sources */,
+				CCA3924E24324336004B3720 /* JLPinbubble.swift in Sources */,
 				CCA3921C243233D7004B3720 /* AppDelegate.swift in Sources */,
-				CCA3924C24323655004B3720 /* JBubbleViewModel.swift in Sources */,
+				CCA3924C24323655004B3720 /* JLBubbleViewModel.swift in Sources */,
 				CCA3921E243233D7004B3720 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

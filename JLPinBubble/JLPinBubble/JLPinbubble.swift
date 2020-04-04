@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct JPinbubble: View {
-    @EnvironmentObject var model: JBubbleViewModel
+struct JLPinbubble: View {
+    @EnvironmentObject var model: JLBubbleViewModel
     var onlyShowNum: Bool
     var scale:CGFloat = 1.0
     
@@ -24,11 +24,12 @@ struct JPinbubble: View {
     
 }
 
-
+#if DEBUG
 struct BubbleView_Previews: PreviewProvider {
-    static var bubbleList = JBubbleCanvasViewModel.bubbleCanvasDataSource
+    static var bubbleList = JLBubbleCanvasViewModel.bubbleCanvasDataSource
     static var previews: some View {
-        JPinbubble(onlyShowNum: true, scale: 1.0).environmentObject(bubbleList.list[0])
+        JLPinbubble(onlyShowNum: true, scale: 1.0).environmentObject(bubbleList.list[0])
             .previewLayout(.fixed(width: 40, height: 30))
     }
 }
+#endif
